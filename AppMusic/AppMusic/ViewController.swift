@@ -97,7 +97,157 @@ class ViewController: UIViewController ,AVAudioPlayerDelegate  {
         return image
     }()
 
+    //MARK: FUNCTION CONTROL
+       @objc func play_pause ()
+       {
+           if audioPlayer.isPlaying {
+               audioPlayer.pause()
+               playBtn.setImage(UIImage(named: "play"), for: .normal)
+               updateTime()
+           }else{
+               audioPlayer.play()
+               getArtistInfo ()
+               playBtn.setImage(UIImage(named: "pause"), for: .normal)
+               updateTime()
+
+           }
+           
+       }
+      @objc func _mix ()
+      {
+       if isMix{
+           isMix = false
+           mix.setImage(UIImage(named: "mix"), for: .normal)
+       }
+       else{
+           isMix = true
+           mix.setImage(UIImage(named: "mix-selected"), for: .normal)
+       }
     
+       }
+       @objc func _back ()
+       {
+           if isMix {
+               if rondomInt < songList.count - 1 {
+                   rondomInt -= 1
+                   if rondomInt < 0  {
+                       rondomInt = 0
+                       return
+                   }
+                   activeSong = rondomInt
+                   playThisSong(activeSong: songList[rondomInt])
+                   time.text = ""
+                   totalTime.text = ""
+                   updateTime()
+                   getArtistInfo()
+                   audioPlayer.play()
+                   playBtn.setImage(UIImage(named: "pause"), for: .normal)
+               }
+               else{
+                   rondomInt = 0
+                   activeSong = 0
+                   playThisSong(activeSong: songList[activeSong])
+                   time.text = ""
+                   totalTime.text = ""
+                    updateTime()
+                    getArtistInfo()
+                     audioPlayer.play()
+                   playBtn.setImage(UIImage(named: "pause"), for: .normal)
+               }
+           }else{
+               
+               if activeSong < songList.count - 1 {
+                   activeSong -= 1
+                   if activeSong < 0 {
+                       activeSong = 0
+                       return
+                   }
+                   playThisSong(activeSong: songList[activeSong])
+                   time.text = ""
+                    totalTime.text = ""
+                  updateTime()
+                  getArtistInfo()
+                  audioPlayer.play()
+                   playBtn.setImage(UIImage(named: "pause"), for: .normal)
+               }
+               else {
+                   activeSong = 0
+                   playThisSong(activeSong: songList[activeSong])
+                   time.text = ""
+                   totalTime.text = ""
+                    updateTime()
+                   getArtistInfo()
+                  audioPlayer.play()
+                 playBtn.setImage(UIImage(named: "pause"), for: .normal)
+               }
+               
+          }
+       
+       }
+       @objc func _next ()
+       {
+           if isMix {
+               if rondomInt < songList.count - 1 {
+                   rondomInt += 1
+                   activeSong = rondomInt
+                      playThisSong(activeSong: songList[activeSong])
+                               time.text = ""
+                               totalTime.text = ""
+                                updateTime()
+                               getArtistInfo()
+                              audioPlayer.play()
+                             playBtn.setImage(UIImage(named: "pause"), for: .normal)
+                   
+               }else{
+                   rondomInt = 0
+                   activeSong = 0
+                   playThisSong(activeSong: songList[activeSong])
+                                   time.text = ""
+                                   totalTime.text = ""
+                                    updateTime()
+                                   getArtistInfo()
+                                  audioPlayer.play()
+                                 playBtn.setImage(UIImage(named: "pause"), for: .normal)
+               }
+               
+           }else{
+               if activeSong < songList.count - 1 {
+                   activeSong += 1
+                   if activeSong > songList.count {
+                       activeSong = 0
+                       return
+                   }
+                   playThisSong(activeSong: songList[activeSong])
+                    time.text = ""
+                   totalTime.text = ""
+                    updateTime()
+                    getArtistInfo()
+                   getCoverImage()
+                     audioPlayer.play()
+                 playBtn.setImage(UIImage(named: "pause"), for: .normal)
+               }else{
+                   activeSong = 0
+                   playThisSong(activeSong: songList[activeSong])
+                                                             time.text = ""
+                                                             totalTime.text = ""
+                                                              updateTime()
+                                                             getArtistInfo()
+                                                            audioPlayer.play()
+                                                           playBtn.setImage(UIImage(named: "pause"), for: .normal)
+               }
+           }
+           
+        }
+       @objc func _slider () {
+           if audioPlayer.isPlaying {
+               audioPlayer.stop()
+               audioPlayer.currentTime =  TimeInterval(slider.value)
+               audioPlayer.play()
+           }else{
+               audioPlayer.currentTime = TimeInterval(slider.value)
+           }
+       }
+       
     
     func prapareSong(){
         do{
