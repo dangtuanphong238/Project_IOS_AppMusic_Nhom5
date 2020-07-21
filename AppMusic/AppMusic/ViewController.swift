@@ -14,6 +14,89 @@ import MediaPlayer
 var nowPlayingInfo = [String : Any] ()
 class ViewController: UIViewController ,AVAudioPlayerDelegate  {
 
+    //MARK: CREATE UI
+    let playBtn : UIButton = {
+        let btn = UIButton()
+        btn.setImage(UIImage(named: "play"), for: .normal)
+        btn.addTarget(self, action: #selector(play_pause), for: .touchUpInside)
+        return btn
+    }()
+    
+    let mix : UIButton = {
+        let btn = UIButton()
+        btn.setImage(UIImage(named: "mix"), for: .normal)
+        btn.addTarget(self, action: #selector(_mix), for: .touchUpInside)
+
+        return btn
+    }()
+    
+    let backBtn : UIButton = {
+        let btn = UIButton(type: .system)
+        btn.setImage(UIImage(named: "back"), for: .normal)
+        btn.addTarget(self, action: #selector(_back), for: .touchUpInside)
+
+        return btn
+    }()
+    let nextBtn : UIButton = {
+        let btn = UIButton(type: .system)
+        btn.setImage(UIImage(named: "next"), for: .normal)
+        btn.addTarget(self, action: #selector(_next), for: .touchUpInside)
+
+        return btn
+    }()
+    
+    
+    let slider : UISlider = {
+        
+        let slider = UISlider()
+        slider.maximumValue = 1000
+        slider.minimumValue = 0
+        slider.tintColor = UIColor.blue
+        slider.addTarget(self, action: #selector(_slider), for: .touchDragInside)
+        return slider
+    }()
+
+    let time : UILabel = {
+       let label = UILabel()
+        label.text = "-:--"
+        label.font = UIFont.systemFont(ofSize : 12)
+        label.textColor = .blue
+        return label
+    }()
+    let totalTime : UILabel = {
+         let label = UILabel()
+          label.text = "-:--"
+          label.font = UIFont.systemFont(ofSize : 12)
+          label.textColor = .blue
+          return label
+      }()
+    
+    
+    let artistName : UILabel = {
+        let label = UILabel()
+        label.text = "unknown"
+        label.font = UIFont.systemFont(ofSize : 12)
+        label.textColor = UIColor.lightGray
+        return label
+    }()
+    
+    let songTitle : UILabel = {
+         let label = UILabel()
+         label.text = "unknown"
+         label.font = UIFont.systemFont(ofSize : 18)
+         label.textColor = UIColor.black
+         return label
+     }()
+    
+    
+    let artistImage : UIImageView = {
+       let image = UIImageView()
+        image.clipsToBounds = true
+        image.layer.cornerRadius = 10
+        image.contentMode = .scaleAspectFill
+        return image
+    }()
+
     
     
     func prapareSong(){
@@ -58,8 +141,11 @@ class ViewController: UIViewController ,AVAudioPlayerDelegate  {
     }
 
     
-    
+        
 }
+
+
+
 extension UIView{
     func anchor(top : NSLayoutYAxisAnchor?
                 ,left : NSLayoutXAxisAnchor?,
