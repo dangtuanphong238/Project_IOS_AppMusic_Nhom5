@@ -249,6 +249,63 @@ class ViewController: UIViewController ,AVAudioPlayerDelegate  {
        }
        
     
+    override func viewDidLoad() {
+           super.viewDidLoad()
+           
+           let playerIconsStack = UIStackView(arrangedSubviews: [backBtn,nextBtn,mix,playBtn])
+           playerIconsStack.distribution = .fillEqually
+           playerIconsStack.axis = .horizontal
+           playerIconsStack.spacing = 10
+           
+           view.addSubview(playerIconsStack)
+           
+           playerIconsStack.anchor(top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, rigth: view.rightAnchor, marginTop: 0, marginLeft: 20, marginBottom: 80, marginRigth: 20, width: 0, heigth: 0)
+           
+           view.addSubview(slider)
+           
+           slider.anchor(top: nil, left: view.leftAnchor, bottom: playerIconsStack.topAnchor, rigth: view.rightAnchor, marginTop: 0, marginLeft: 30, marginBottom: 12, marginRigth: 30, width: 0, heigth: 0)
+           
+           view.addSubview(time)
+           time.anchor(top: nil, left: view.leftAnchor, bottom: slider.topAnchor, rigth: nil, marginTop: 0, marginLeft: 30, marginBottom: 8, marginRigth: 0, width: 0, heigth: 0)
+           
+           view.addSubview(totalTime)
+           totalTime.anchor(top: nil, left: nil, bottom: slider.topAnchor, rigth: view.rightAnchor, marginTop: 0, marginLeft: 0, marginBottom: 8, marginRigth: 30, width: 0, heigth: 0)
+           
+           
+           let songInfoStack = UIStackView(arrangedSubviews: [songTitle,artistName])
+           songInfoStack.axis = .vertical
+           songInfoStack.alignment = .center
+           songInfoStack.distribution = .equalCentering
+           songInfoStack.spacing = 8
+           
+           view.addSubview(songInfoStack)
+           songInfoStack.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+           
+           songInfoStack.anchor(top: nil, left: nil, bottom: totalTime.topAnchor, rigth: nil, marginTop: 0, marginLeft: 0, marginBottom: 12, marginRigth: 0, width: 0, heigth: 0)
+
+           view.addSubview(artistImage)
+           
+           artistImage.anchor(top: nil, left: view.leftAnchor, bottom: songInfoStack.topAnchor, rigth: view.rightAnchor, marginTop: 20, marginLeft: 20, marginBottom: 20, marginRigth: 20, width: self.view.frame.width, heigth: self.view.frame.height / 2)
+           
+
+    
+           let button = UIBarButtonItem(image: UIImage(named: "list"), style: .plain, target: self, action: #selector(action))
+           navigationItem.rightBarButtonItem = button
+           navigationItem.title = "Music Player"
+           
+           getSongs()
+           prapareSong()
+           updateTime()
+           setUpRemoteTransparentControls ()
+           setupNotifications()
+           getArtistInfo()
+           getCoverImage()
+                
+           
+       }
+
+    
+    
     func prapareSong(){
         do{
             let audioPath = Bundle.main.path(forResource: songList[activeSong], ofType: ".mp3")
