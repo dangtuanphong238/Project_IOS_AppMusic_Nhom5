@@ -238,6 +238,7 @@ class ViewController: UIViewController ,AVAudioPlayerDelegate  {
            }
            
         }
+    
        @objc func _slider () {
            if audioPlayer.isPlaying {
                audioPlayer.stop()
