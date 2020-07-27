@@ -35,9 +35,6 @@ class SongCell: UITableViewCell {
           
           artistImage.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         artistImage.anchor(top: nil, left: self.leftAnchor, bottom: nil, rigth: nil, marginTop: 16, marginLeft: 16, marginBottom: 16, marginRigth: 0, width: 45, heigth: 45)
-        
-        
-          
       }
     
     required init?(coder: NSCoder) {

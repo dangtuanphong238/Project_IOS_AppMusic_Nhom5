@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 var isMix = false
-var rondomInt = 0
+var randomInt = 0
 import MediaPlayer
 var nowPlayingInfo = [String : Any] ()
 class ViewController: UIViewController ,AVAudioPlayerDelegate  {
@@ -128,14 +128,14 @@ class ViewController: UIViewController ,AVAudioPlayerDelegate  {
     @objc func _back ()
     {
         if isMix {
-            if rondomInt < songList.count - 1 {
-                rondomInt -= 1
-                if rondomInt < 0  {
-                    rondomInt = 0
+            if randomInt < songList.count - 1 {
+                randomInt -= 1
+                if randomInt < 0  {
+                    randomInt = 0
                     return
                 }
-                activeSong = rondomInt
-                playThisSong(activeSong: songList[rondomInt])
+                activeSong = randomInt
+                playThisSong(activeSong: songList[randomInt])
                 time.text = ""
                 totalTime.text = ""
                 updateTime()
@@ -144,7 +144,7 @@ class ViewController: UIViewController ,AVAudioPlayerDelegate  {
                 playBtn.setImage(UIImage(named: "pause"), for: .normal)
             }
             else{
-                rondomInt = 0
+                randomInt = 0
                 activeSong = 0
                 playThisSong(activeSong: songList[activeSong])
                 time.text = ""
@@ -187,9 +187,9 @@ class ViewController: UIViewController ,AVAudioPlayerDelegate  {
     @objc func _next ()
     {
         if isMix {
-            if rondomInt < songList.count - 1 {
-                rondomInt += 1
-                activeSong = rondomInt
+            if randomInt < songList.count - 1 {
+                randomInt += 1
+                activeSong = randomInt
                 playThisSong(activeSong: songList[activeSong])
                 time.text = ""
                 totalTime.text = ""
@@ -199,7 +199,7 @@ class ViewController: UIViewController ,AVAudioPlayerDelegate  {
                 playBtn.setImage(UIImage(named: "pause"), for: .normal)
                 
             }else{
-                rondomInt = 0
+                randomInt = 0
                 activeSong = 0
                 playThisSong(activeSong: songList[activeSong])
                 time.text = ""
@@ -269,19 +269,15 @@ class ViewController: UIViewController ,AVAudioPlayerDelegate  {
     @objc func update (_timer : Timer ) {
         slider.value = Float(audioPlayer.currentTime)
         time.text =  stringFormatterTimeInterval(interval: TimeInterval(slider.value)) as String
-        
-
     }
     
+    //MARK: Chuẩn bị nhạc
     func prapareSong(){
         do{
             let audioPath = Bundle.main.path(forResource: songList[activeSong], ofType: ".mp3")
             try audioPlayer = AVAudioPlayer(contentsOf: NSURL(fileURLWithPath: audioPath!) as URL)
             audioPlayer.prepareToPlay()
             audioPlayer.delegate = self
-            
-            
-            
         }
         catch{
             print(error.localizedDescription)
@@ -347,7 +343,7 @@ class ViewController: UIViewController ,AVAudioPlayerDelegate  {
             let audioPath = Bundle.main.path(forResource: activeSong, ofType: ".mp3")
             try audioPlayer = AVAudioPlayer(contentsOf: NSURL(fileURLWithPath: audioPath!) as URL)
             audioPlayer.prepareToPlay()
-            rondomInt = Int.random(in: 0...songList.count)
+            randomInt = Int.random(in: 0...songList.count)
             
         }
         catch {
@@ -364,7 +360,7 @@ class ViewController: UIViewController ,AVAudioPlayerDelegate  {
        
        override func viewDidLoad() {
            super.viewDidLoad()
-           
+           //add subview
            let playerIconsStack = UIStackView(arrangedSubviews: [backBtn,nextBtn,mix,playBtn])
            playerIconsStack.distribution = .fillEqually
            playerIconsStack.axis = .horizontal
@@ -409,141 +405,16 @@ class ViewController: UIViewController ,AVAudioPlayerDelegate  {
            getSongs()
            prapareSong()
            updateTime()
-           setUpRemoteTransparentControls ()
-           setupNotifications()
            getArtistInfo()
            getCoverImage()
                 
            
        }
-    @objc func handleInterruption (notification : Notification )
-    {
-        guard let userInfo = notification.userInfo,
-        let typeValue = userInfo[AVAudioSessionInterruptionTypeKey] as? UInt,
-            let type = AVAudioSession.InterruptionType(rawValue:  typeValue)
-        else {
-            return
-        }
-        
-        if type == .began {
-            print("began")
-        }
-        else if type == .ended {
-          if  let optionsValue = userInfo[AVAudioSessionInterruptionOptionKey] as? UInt{
-                let options = AVAudioSession.InterruptionOptions(rawValue: optionsValue)
-            if options.contains(.shouldResume){
-                playThisSong(activeSong: songList[activeSong])
-            }
-            else {
-                print("end")
-            }
-                
-                
-            }
-        }
-        
-    }
-    
-    func setupNotifications() {
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(handleInterruption), name: AVAudioSession.interruptionNotification, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(handleRouteChange), name: AVAudioSession.routeChangeNotification, object: nil)
-    }
-
-    @objc func handleRouteChange (notificaiton :Notification) {
-        guard let userInfo = notificaiton.userInfo,
-            let reasonValue = userInfo[AVAudioSessionRouteChangeReasonKey] as? UInt,
-            let reason = AVAudioSession.RouteChangeReason(rawValue: reasonValue)
-    
-        else {
-            return
-        }
-        
-        switch reason {
-        case .newDeviceAvailable:
-            let session = AVAudioSession.sharedInstance()
-            for outPut in session.currentRoute.outputs where outPut.portType == AVAudioSession.Port.headphones {
-                print("headphone connected")
-                DispatchQueue.main.sync {
-                    self.playThisSong(activeSong: songList[activeSong])
-                }
-            }
-            break
-        case .oldDeviceUnavailable:
-        
-            if let previusChange = userInfo[AVAudioSessionRouteChangePreviousRouteKey] as? AVAudioSessionRouteDescription {
-                for output in previusChange.outputs where output.portType == AVAudioSession.Port.headphones{
-                    print("headphones disconnected")
-                    DispatchQueue.main.sync {
-                        self.pauseSong()
-                    }
-                }
-            }
-            
-            break
-        default:()
-        }
-    }
-    
-    
-    func setUpRemoteTransparentControls () {
-        let commandCenter = MPRemoteCommandCenter.shared()
-        commandCenter.playCommand.addTarget{
-            event in
-            if !audioPlayer.isPlaying{
-                self.play_pause()
-                self.getCoverImage()
-
-                return .success
-            }
-            return .commandFailed
-        }
-           commandCenter.pauseCommand.addTarget{
-                 event in
-                 if audioPlayer.isPlaying{
-                     self.pauseSong()
-                     return .success
-                 }
-                 return .commandFailed
-             }
-        
-        commandCenter.nextTrackCommand.addTarget{
-            event in
-            if audioPlayer.isPlaying {
-                self._next()
-                self.getCoverImage()
-                return .success
-            }
-            return .commandFailed
-        }
-        commandCenter.previousTrackCommand.addTarget{
-                  event in
-                  if audioPlayer.isPlaying {
-                      self._back()
-                    self.getCoverImage()
-
-                      return .success
-                  }
-                  return .commandFailed
-              }
-        
-        commandCenter.changePlaybackPositionCommand.addTarget(self, action: #selector(changeThumbSlider(_:)))
-        
-        
-    }
-
-    @objc func changeThumbSlider ( _ event : MPChangePlaybackPositionCommandEvent) -> MPRemoteCommandHandlerStatus{
-          audioPlayer.currentTime = event.positionTime
-          return .success
-      }
-    
     @objc func action(){
         let controller = MusicList()
         navigationController?.pushViewController(controller, animated: true)
     }
     
-
-     
 }
 
 
