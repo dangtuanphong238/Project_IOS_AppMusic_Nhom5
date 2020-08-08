@@ -63,6 +63,7 @@ class ViewController: UIViewController ,AVAudioPlayerDelegate  {
         label.textColor = .blue
         return label
     }()
+    
     let totalTime : UILabel = {
         let label = UILabel()
         label.text = "-:--"
@@ -246,6 +247,8 @@ class ViewController: UIViewController ,AVAudioPlayerDelegate  {
                }
            }
        }
+    
+    //MARK: Xử lý time song
     @objc func _slider () {
         if audioPlayer.isPlaying {
             audioPlayer.stop()
@@ -284,7 +287,7 @@ class ViewController: UIViewController ,AVAudioPlayerDelegate  {
         }
     }
     
-    
+    //Lấy nhạc
     func getSongs()  {
         
         let folderUrl = URL(fileURLWithPath: Bundle.main.resourcePath!)
@@ -358,6 +361,14 @@ class ViewController: UIViewController ,AVAudioPlayerDelegate  {
         }
     }
        
+    //sử dụng ViewWillAppear chỉ để cập nhật dữ liệu trên biểu mẫu
+    override func viewWillAppear(_ animated: Bool) {
+        if audioPlayer.isPlaying {
+            getArtistInfo()
+            updateTime()
+            playBtn.setImage(UIImage(named: "pause"), for: .normal)
+        }
+    }
        override func viewDidLoad() {
            super.viewDidLoad()
            //add subview
