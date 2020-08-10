@@ -114,6 +114,7 @@ class ViewController: UIViewController ,AVAudioPlayerDelegate  {
         }
         
     }
+    
     @objc func _mix ()
     {
         if isMix{

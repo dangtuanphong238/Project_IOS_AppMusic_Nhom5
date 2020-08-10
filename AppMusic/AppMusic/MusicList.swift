@@ -2,7 +2,7 @@
 //  MusicList.swift
 //  AppMusic
 //
-//  Created by Zalora on 7/20/20.
+//  Created by Zalora on 7/12/20.
 //  Copyright © 2020 Dang Phong. All rights reserved.
 //
 import UIKit
@@ -53,7 +53,7 @@ class MusicList:UITableViewController{
 
       override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
           // #warning Incomplete implementation, return the number of rows
-          return 5
+        return 15
       }
 
     
