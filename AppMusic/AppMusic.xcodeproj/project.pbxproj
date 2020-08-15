@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		23A7D3D324E0C3CD00236FB8 /* Lac Troi.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A7D3D224E0C3CD00236FB8 /* Lac Troi.mp3 */; };
+		23A7D3D524E0C3D700236FB8 /* Chung Ta Khong Thuoc Ve Nhau MTP.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23A7D3D424E0C3D700236FB8 /* Chung Ta Khong Thuoc Ve Nhau MTP.mp3 */; };
+		23B4170224DEE0D0008D6E40 /* Em Cua Ngay Hom Qua.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23B4170124DEE0D0008D6E40 /* Em Cua Ngay Hom Qua.mp3 */; };
+		23B4170424DEE2F1008D6E40 /* Con Mua Ngang Qua.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23B4170324DEE2F1008D6E40 /* Con Mua Ngang Qua.mp3 */; };
+		23B4171624DEEA0B008D6E40 /* Buong Doi Tay Nhau Ra.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23B4171524DEEA0B008D6E40 /* Buong Doi Tay Nhau Ra.mp3 */; };
+		23B4171A24DEED08008D6E40 /* Hay Trao Cho Anh.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23B4171924DEED08008D6E40 /* Hay Trao Cho Anh.mp3 */; };
+		23B4171C24DEEE5D008D6E40 /* Khong Phai Dang Vua Dau.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23B4171B24DEEE5C008D6E40 /* Khong Phai Dang Vua Dau.mp3 */; };
+		23B4172024DEEF82008D6E40 /* Buon Lam Chi Em Oi.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23B4171F24DEEF81008D6E40 /* Buon Lam Chi Em Oi.mp3 */; };
+		23B4172224DEF0AF008D6E40 /* Ong Ba Anh.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23B4172124DEF0AF008D6E40 /* Ong Ba Anh.mp3 */; };
+		23B4172424DEF308008D6E40 /* Thang Nam Khong Quen H2K.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23B4172324DEF308008D6E40 /* Thang Nam Khong Quen H2K.mp3 */; };
 		23C4CFF524B2EB5B0043AB10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C4CFF424B2EB5B0043AB10 /* AppDelegate.swift */; };
 		23C4CFF724B2EB5B0043AB10 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C4CFF624B2EB5B0043AB10 /* SceneDelegate.swift */; };
 		23C4CFF924B2EB5B0043AB10 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C4CFF824B2EB5B0043AB10 /* ViewController.swift */; };
@@ -23,6 +33,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		23A7D3D224E0C3CD00236FB8 /* Lac Troi.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Lac Troi.mp3"; path = "../../../Resource/Lac Troi.mp3"; sourceTree = "<group>"; };
+		23A7D3D424E0C3D700236FB8 /* Chung Ta Khong Thuoc Ve Nhau MTP.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Chung Ta Khong Thuoc Ve Nhau MTP.mp3"; sourceTree = "<group>"; };
+		23B4170124DEE0D0008D6E40 /* Em Cua Ngay Hom Qua.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Em Cua Ngay Hom Qua.mp3"; sourceTree = "<group>"; };
+		23B4170324DEE2F1008D6E40 /* Con Mua Ngang Qua.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Con Mua Ngang Qua.mp3"; sourceTree = "<group>"; };
+		23B4171524DEEA0B008D6E40 /* Buong Doi Tay Nhau Ra.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Buong Doi Tay Nhau Ra.mp3"; sourceTree = "<group>"; };
+		23B4171924DEED08008D6E40 /* Hay Trao Cho Anh.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Hay Trao Cho Anh.mp3"; sourceTree = "<group>"; };
+		23B4171B24DEEE5C008D6E40 /* Khong Phai Dang Vua Dau.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Khong Phai Dang Vua Dau.mp3"; sourceTree = "<group>"; };
+		23B4171F24DEEF81008D6E40 /* Buon Lam Chi Em Oi.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Buon Lam Chi Em Oi.mp3"; sourceTree = "<group>"; };
+		23B4172124DEF0AF008D6E40 /* Ong Ba Anh.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Ong Ba Anh.mp3"; sourceTree = "<group>"; };
+		23B4172324DEF308008D6E40 /* Thang Nam Khong Quen H2K.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Thang Nam Khong Quen H2K.mp3"; sourceTree = "<group>"; };
 		23C4CFF124B2EB5B0043AB10 /* AppMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23C4CFF424B2EB5B0043AB10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23C4CFF624B2EB5B0043AB10 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -87,6 +107,16 @@
 		23D60AE224C5E96900624DAF /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				23B4171924DEED08008D6E40 /* Hay Trao Cho Anh.mp3 */,
+				23B4171F24DEEF81008D6E40 /* Buon Lam Chi Em Oi.mp3 */,
+				23B4171524DEEA0B008D6E40 /* Buong Doi Tay Nhau Ra.mp3 */,
+				23B4170324DEE2F1008D6E40 /* Con Mua Ngang Qua.mp3 */,
+				23B4172324DEF308008D6E40 /* Thang Nam Khong Quen H2K.mp3 */,
+				23B4171B24DEEE5C008D6E40 /* Khong Phai Dang Vua Dau.mp3 */,
+				23B4170124DEE0D0008D6E40 /* Em Cua Ngay Hom Qua.mp3 */,
+				23A7D3D424E0C3D700236FB8 /* Chung Ta Khong Thuoc Ve Nhau MTP.mp3 */,
+				23B4172124DEF0AF008D6E40 /* Ong Ba Anh.mp3 */,
+				23A7D3D224E0C3CD00236FB8 /* Lac Troi.mp3 */,
 				23D60AE624C5E98D00624DAF /* Animals.mp3 */,
 				23D60AE724C5E98D00624DAF /* Hello.mp3 */,
 				23D60AE324C5E98C00624DAF /* Levels.mp3 */,
@@ -154,14 +184,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23B4172024DEEF82008D6E40 /* Buon Lam Chi Em Oi.mp3 in Resources */,
+				23B4172424DEF308008D6E40 /* Thang Nam Khong Quen H2K.mp3 in Resources */,
 				23C4D00124B2EB5D0043AB10 /* LaunchScreen.storyboard in Resources */,
 				23C4CFFE24B2EB5D0043AB10 /* Assets.xcassets in Resources */,
 				23D60AEB24C5E98D00624DAF /* Animals.mp3 in Resources */,
 				23D60AEC24C5E98D00624DAF /* Hello.mp3 in Resources */,
 				23C4CFFC24B2EB5B0043AB10 /* Main.storyboard in Resources */,
+				23B4171C24DEEE5D008D6E40 /* Khong Phai Dang Vua Dau.mp3 in Resources */,
+				23A7D3D524E0C3D700236FB8 /* Chung Ta Khong Thuoc Ve Nhau MTP.mp3 in Resources */,
+				23B4171A24DEED08008D6E40 /* Hay Trao Cho Anh.mp3 in Resources */,
 				23D60AEA24C5E98D00624DAF /* Wake Me Up.mp3 in Resources */,
+				23B4172224DEF0AF008D6E40 /* Ong Ba Anh.mp3 in Resources */,
+				23B4170224DEE0D0008D6E40 /* Em Cua Ngay Hom Qua.mp3 in Resources */,
 				23D60AE924C5E98D00624DAF /* Someone Like You.mp3 in Resources */,
+				23B4170424DEE2F1008D6E40 /* Con Mua Ngang Qua.mp3 in Resources */,
+				23A7D3D324E0C3CD00236FB8 /* Lac Troi.mp3 in Resources */,
 				23D60AE824C5E98D00624DAF /* Levels.mp3 in Resources */,
+				23B4171624DEEA0B008D6E40 /* Buong Doi Tay Nhau Ra.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

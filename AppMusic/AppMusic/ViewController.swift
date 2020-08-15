@@ -238,7 +238,6 @@ class ViewController: UIViewController ,AVAudioPlayerDelegate  {
                 playBtn.setImage(UIImage(named: "pause"), for: .normal)
             }
         }
-        
     }
     func getCoverImage() {
            if let image = self.artistImage.image {
